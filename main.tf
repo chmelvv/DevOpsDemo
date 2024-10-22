@@ -25,6 +25,27 @@ resource "aws_subnet" "private2" {
   availability_zone = "eu-west-1b"
 }
 
+# Create Internet Gateway
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.main.id
+}
+
+# Create Route Table
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.main.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.main.id
+  }
+}
+
+# Associate Route Table with Public Subnet
+resource "aws_route_table_association" "public1" {
+  subnet_id      = aws_subnet.public1.id
+  route_table_id = aws_route_table.public.id
+}
+
 # Security Group for EC2
 resource "aws_security_group" "www" {
   vpc_id = aws_vpc.main.id
@@ -123,4 +144,9 @@ resource "aws_db_subnet_group" "main" {
 resource "aws_elasticache_subnet_group" "main" {
   name = "main"
   subnet_ids = [aws_subnet.private1.id]
+}
+
+resource "aws_key_pair" "deployer" {
+  key_name   = "deployer-key"
+  public_key = file("wordpress_id_rsa.pub")
 }
