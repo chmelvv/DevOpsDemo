@@ -1,0 +1,57 @@
+1. Requirements and deliverables for your test assignment solution:
+a. Please create an IAM user with ReadOnlyAccess AWS managed policy attached and a readonly
+WordPress admin user, include both users credentials into your email. It will allow our team to
+verify that infrastructure is deployed and running as expected.
+b. Be sure to attach to the letter the most detailed and up-to-date CV, indicating the city, photo,
+contacts, and previous work experience (even if not related to IT).
+c. Provide a link to the GitHub/Bitbucket repository.
+d. Write in the email how many hours were spent on the assignment and which
+difficulties/problems you have faced.
+e. Send your email to the email address hr@abz.agency.
+
+
+(<) Test assignment
+
+1. Description:
+a. To demonstrate your knowledge in the DevOps field you need to create AWS infrastructure for
+a typical web application: one RDS MySQL instance, one ElasticCache-Redis instance and one
+EC2 instance where the application is deployed, and deploy a WordPress installation to the
+EC2 instance. All resources should run in a VPC.
+
+2. Functional requirements:
+a. Infrastructure (using AWS Free Tier) – create in eu-west-1 region:
+i. VPC
+ii. MySQL RDS instance – shouldn’t be reachable from the public internet.
+iii. ElastiCache-Redis instance – shouldn’t be reachable from the public internet.
+iv. EC2 instance – can be reachable from the public internet either directly or via an ALB
+(bonus points).
+b. Application:
+i. Deploy WordPress to EC2 instance.
+ii. Configure WordPress to store data in MySQL RDS.
+iii. Configure WordPress to store sessions in ElastiCache-Redis.
+
+3. Non-functional requirements:
+a. Configuration:
+i. MySQL RDS and ElastiCache-Redis endpoints and credentials should be passed to
+WordPress config via environment variables.
+ii. WordPress config should be checked into git.
+b. IaaC:
+i. Infrastructure is created using Terraform and not manually via AWS Web UI.
+c. Deployment:
+i. Application is deployed using a deployment script (bash or some deployment tool like
+Deployer, Capistrano, etc) and not manually via WordPress installation wizard.
+
+4. Deliverables:
+a. Source Code:
+i. Provide well-commented, organized, and readable source code.
+ii. Ensure that the code adheres to best practices as much as possible.
+b. README File:
+i. Include a detailed README file that describes the following:
+1. Configuration options for deployment script and Terraform module and how
+to customize them.
+2. Troubleshooting tips and common issues.
+
+c. Documentation:
+i. Document any external Terraform module and deployment tool used, briefly
+explaining why you decided to use it.
+ii. Provide a brief overview of the code structure.
