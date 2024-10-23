@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Redirect stdout and stderr to a log file
+exec > /var/log/setup_wordpress.log 2>&1
+
 # Update and install necessary packages
 yum update -y
 yum install -y httpd php php-mysqlnd wget
@@ -24,33 +27,24 @@ mv wp-cli.phar /usr/local/bin/wp
 cp wp-config-sample.php wp-config.php
 
 # Set permissions
-chown -R apache:apache /var/www/html
-chmod -R 755 /var/www/html
+#chown -R apache:apache /var/www/html
+#chmod -R 755 /var/www/html
 chmod 666 /var/www/html/wp-config.php
 
-# Set environment variables for database and Redis
-DB_NAME=wordpress
-DB_USER=admin
-DB_PASSWORD=password
-DB_HOST=$rds_endpoint
-
-REDIS_HOST=$redis_endpoint
-REDIS_PORT=6379
-
 # Configure wp-config.php using WP-CLI
-wp config set DB_NAME "$DB_NAME"
-wp config set DB_USER "$DB_USER"
-wp config set DB_PASSWORD "$DB_PASSWORD"
-wp config set DB_HOST "$DB_HOST"
+wp config set DB_NAME "wordpress"
+wp config set DB_USER "admin"
+wp config set DB_PASSWORD "password"
+wp config set DB_HOST "$rds_endpoint"
 
-wp config set WP_REDIS_HOST "$REDIS_HOST"
-wp config set WP_REDIS_PORT "$REDIS_PORT" --raw
+wp config set WP_REDIS_HOST "$redis_endpoint"
+wp config set WP_REDIS_PORT "6379" --raw
 wp config set WP_REDIS_PREFIX "wordpress"
 wp config set WP_CACHE true --raw
 
-wp core install --url="http://$wordpress1_endpoint" --title="ABZ WordPress" --admin_user="admin" --admin_password="password" --admin_email="viktor.chmel@gmail.com"
-wp plugin install redis-cache --activate
-wp redis enable
+#wp core install --url="http://$wordpress1_endpoint" --title="ABZ WordPress" --admin_user="admin" --admin_password="password" --admin_email="viktor.chmel@gmail.com"
+#wp plugin install redis-cache --activate
+#wp redis enable
 
 
 

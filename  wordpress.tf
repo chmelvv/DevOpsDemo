@@ -15,3 +15,7 @@ resource "aws_instance" "wordpress1" {
     create_before_destroy = true
   }
 }
+
+output "wordpress1_endpoint" {
+  value = aws_instance.wordpress1.public_ip
+}
