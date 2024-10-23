@@ -70,3 +70,6 @@ sudo -u apache  wp redis enable
 
 # Restart Apache to apply changes
 sudo systemctl restart httpd
+
+# Create a read-only user
+sudo -u apache wp user create user _user@example.com --role=editor --user_pass=password
