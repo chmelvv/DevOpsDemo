@@ -44,6 +44,7 @@ echo WP_REDIS_PORT=6379 >> /etc/environment
 echo WP_REDIS_PREFIX=\"wordpress\" >> /etc/environment
 echo WP_CACHE=true >> /etc/environment
 sudo chmod uga-w /etc/environment
+sudo source /etc/environment
 
 sudo -u apache  wp core install \
   --url="http://$wordpress1_endpoint" \
