@@ -7,5 +7,5 @@ output "redis_endpoint" {
 }
 
 output "wordpress1_public_ip" {
-  value = aws_instance.wordpress1.public_ip
+  value =  aws_eip.wordpress1_eip.public_ip
 }
