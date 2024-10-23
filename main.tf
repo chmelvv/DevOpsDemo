@@ -115,10 +115,6 @@ resource "aws_db_instance" "mysql" {
   skip_final_snapshot  = true
 }
 
-output "rds_endpoint" {
-  value = aws_db_instance.mysql.address
-}
-
 # ElastiCache Redis
 resource "aws_elasticache_cluster" "redis" {
   cluster_id           = "wordpress-redis"
@@ -128,10 +124,6 @@ resource "aws_elasticache_cluster" "redis" {
   parameter_group_name = "default.redis7"
   security_group_ids = [aws_security_group.db.id]
   subnet_group_name    = aws_elasticache_subnet_group.main.name
-}
-
-output "redis_endpoint" {
-  value = aws_elasticache_cluster.redis.cache_nodes[0].address
 }
 
 # DB Subnet Group

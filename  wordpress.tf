@@ -9,13 +9,13 @@ resource "aws_instance" "wordpress1" {
     Name = "WordPress1"
   }
 
-  user_data = file("setup_wordpress.sh")
+  user_data = templatefile("setup_wordpress.sh.tpl", {
+    rds_endpoint   = aws_db_instance.mysql.address,
+    redis_endpoint = aws_elasticache_cluster.redis.cache_nodes[0].address,
+    wordpress1_public_ip = aws_instance.wordpress1.public_ip
+  })
 
   lifecycle {
     create_before_destroy = true
   }
-}
-
-output "wordpress1_endpoint" {
-  value = aws_instance.wordpress1.public_ip
 }

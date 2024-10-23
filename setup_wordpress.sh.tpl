@@ -37,17 +37,27 @@ sudo chmod uga+w /etc/environment
 echo DB_NAME="wordpress" >> /etc/environment
 echo  DB_USER=\"admin\" >> /etc/environment
 echo DB_PASSWORD=\"password\" >> /etc/environment
-echo DB_HOST=\"$rds_endpoint\" >> /etc/environment
+echo DB_HOST=\"(rds_endpoint)\" >> /etc/environment
 
-echo WP_REDIS_HOST=\"$redis_endpoint\" >> /etc/environment
+echo WP_REDIS_HOST=\"(redis_endpoint)\" >> /etc/environment
 echo WP_REDIS_PORT=6379 >> /etc/environment
 echo WP_REDIS_PREFIX=\"wordpress\" >> /etc/environment
 echo WP_CACHE=true >> /etc/environment
 sudo chmod uga-w /etc/environment
 sudo source /etc/environment
 
+sudo -u apache wp config set DB_NAME "$DB_NAME"
+sudo -u apache wp config set DB_USER "$DB_USER"
+sudo -u apache wp config set DB_PASSWORD "$DB_PASSWORD"
+sudo -u apache wp config set DB_HOST "$DB_HOST"
+
+sudo -u apache wp config set WP_REDIS_HOST "$WP_REDIS_HOST"
+sudo -u apache wp config set WP_REDIS_PORT "$WP_REDIS_PORT" --raw
+sudo -u apache wp config set WP_REDIS_PREFIX "$WP_REDIS_PREFIX"
+sudo -u apache wp config set WP_CACHE "$WP_CACHE" --raw
+
 sudo -u apache  wp core install \
-  --url="http://$wordpress1_endpoint" \
+  --url="http://(wordpress1_public_ip)" \
   --title="ABZ WordPress" \
   --admin_user="admin" \
   --admin_password="password" \
