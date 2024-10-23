@@ -20,16 +20,16 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', '$DB_NAME' );
+define( 'DB_NAME', 'DB_NAME' );
 
 /** Database username */
-define( 'DB_USER', '$DB_USER' );
+define( 'DB_USER', 'DB_USER' );
 
 /** Database password */
-define( 'DB_PASSWORD', '$DB_PASSWORD' );
+define( 'DB_PASSWORD', 'DB_PASSWORD' );
 
 /** Database hostname */
-define( 'DB_HOST', '$DB_HOST' );
+define( 'DB_HOST', 'DB_HOST' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -83,10 +83,10 @@ define( 'DB_COLLATE', '' );
 
  /* Add any custom values between this line and the "stop editing" line. */
 
-define( 'WP_REDIS_HOST', '$WP_REDIS_HOST' );
-define( 'WP_REDIS_PORT', '$WP_REDIS_PORT' );
-define( 'WP_REDIS_PREFIX', '$WP_REDIS_PREFIX' );
-define( 'WP_CACHE', $WP_CACHE );
+define( 'WP_REDIS_HOST', 'WP_REDIS_HOST' );
+define( 'WP_REDIS_PORT', 'WP_REDIS_PORT' );
+define( 'WP_REDIS_PREFIX', 'WP_REDIS_PREFIX' );
+define( 'WP_CACHE', 'WP_CACHE' );
 
  /* That's all, stop editing! Happy publishing. */
 
