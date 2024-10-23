@@ -116,7 +116,7 @@ resource "aws_db_instance" "mysql" {
 }
 
 output "rds_endpoint" {
-  value = aws_db_instance.mysql.endpoint
+  value = aws_db_instance.mysql.address
 }
 
 # ElastiCache Redis
