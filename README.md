@@ -9,7 +9,7 @@ git clone https://github.com/chmelvv/abz-test.git
 terraform deploy
 ```
 4) After the script finishes, it will output some hostname and IP address of the
-   deployed instance,e.g.:
+   deployed instance, e.g.
 ```
 rds_endpoint = "wordpress-mysql.c3ackwi4garm.eu-west-1.rds.amazonaws.com"
 redis_endpoint = "wordpress-redis.kjtjv1.0001.euw1.cache.amazonaws.com"
@@ -31,7 +31,7 @@ and use login/password provided in the email.
 ```
 terraform destroy
 ```
-8) Installation log of WordPress instnce can be found in the file _/var/log/setup_wordpress.log_. 
+8) Installation log of WordPress instance can be found in the file _/var/log/setup_wordpress.log_. 
 
 ## Configuration options
 Solution configured as asked via environment variables stored in /etc/environment file on WordPress instance.
