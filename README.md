@@ -30,9 +30,10 @@ and use login/password provided in the email.
 ```
 terraform destroy
 ```
-Installation log of WordPress instnce can be found in the file _/var/log/setup_wordpress.log_.8) 
+8) Installation log of WordPress instnce can be found in the file _/var/log/setup_wordpress.log_. 
 
 ## Configuration options
 Solution configured as asked via environment variables stored in /etc/environment file on WordPress instance.
-It can be changed in the _setup_wordpress.sh.tpl_ script. But to my mind it 
-would be better to save them all in the root of this project in separate properties file.
+It can be changed in the _setup_wordpress.sh.tpl_ script. 
+
+To my mind it would be better to save them all in the root of this project in separate properties file, but it is as it is.
