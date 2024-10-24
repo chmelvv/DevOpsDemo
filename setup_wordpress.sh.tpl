@@ -25,7 +25,7 @@ sudo chmod +x wp-cli.phar
 sudo mv wp-cli.phar /usr/local/bin/wp
 
 # Create wp-config.php from sample
- wget -O wp-config.php https://raw.githubusercontent.com/chmelvv/abz-test/www-only/wp-config.php
+ wget -O wp-config.php https://raw.githubusercontent.com/chmelvv/abz-test/master/wp-config.php
 
 # Set permissions
 sudo chown -R apache:apache /var/www/html
