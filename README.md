@@ -26,6 +26,7 @@ ssh -i wordpress_id_rsa ec2-user@<wordpress1_public_ip>
 http://<wordpress1_public_ip>/wp-admin
 ```
 and use login/password provided in the email.
+
 7) To destroy the infrastructure, run the following command:
 ```
 terraform destroy
