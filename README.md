@@ -1,5 +1,4 @@
-Configuration options for deployment script and Terraform module and how
-   to customize them.
+## How to run project
 1) To clone this project to you local machine, run the following command:
 ```
 git clone https://github.com/chmelvv/abz-test.git
@@ -31,5 +30,9 @@ and use login/password provided in the email.
 ```
 terraform destroy
 ```
+Installation log of WordPress instnce can be found in the file _/var/log/setup_wordpress.log_.8) 
 
-
+## Configuration options
+Solution configured as asked via environment variables stored in /etc/environment file on WordPress instance.
+It can be changed in the _setup_wordpress.sh.tpl_ script. But to my mind it 
+would be better to save them all in the root of this project in separate properties file.

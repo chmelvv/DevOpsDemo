@@ -24,15 +24,14 @@ sudo curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cl
 sudo chmod +x wp-cli.phar
 sudo mv wp-cli.phar /usr/local/bin/wp
 
-# Create wp-config.php from sample
+# Get wp-config.php from git repository as asked
  wget -O wp-config.php https://raw.githubusercontent.com/chmelvv/abz-test/master/wp-config.php
 
 # Set permissions
 sudo chown -R apache:apache /var/www/html
-#chmod -R 755 /var/www/html
 sudo chmod 666 /var/www/html/wp-config.php
 
-# Configure wp-config.php using WP-CLI
+# Set environment variables
 sudo chmod uga+w /etc/environment
 echo DB_NAME=\"wordpress\" >> /etc/environment
 echo  DB_USER=\"admin\" >> /etc/environment
@@ -46,6 +45,7 @@ echo WP_CACHE=true >> /etc/environment
 sudo chmod uga-w /etc/environment
 source /etc/environment
 
+# Configure WordPress by wp cli
 sudo -u apache wp config set DB_NAME "$DB_NAME"
 sudo -u apache wp config set DB_USER "$DB_USER"
 sudo -u apache wp config set DB_PASSWORD "$DB_PASSWORD"
@@ -56,6 +56,7 @@ sudo -u apache wp config set WP_REDIS_PORT "$WP_REDIS_PORT" --raw
 sudo -u apache wp config set WP_REDIS_PREFIX "$WP_REDIS_PREFIX"
 sudo -u apache wp config set WP_CACHE "$WP_CACHE" --raw
 
+# Install WordPress
 sudo -u apache  wp core install \
   --url="http://${wordpress1_public_ip}" \
   --title="ABZ WordPress" \
@@ -63,6 +64,7 @@ sudo -u apache  wp core install \
   --admin_password="password" \
   --admin_email="viktor.chmel@gmail.com"
 
+# Install Redis Object Cache plugin
 sudo mkdir -p /usr/share/httpd/.wp-cli/cache/
 sudo chown -R apache:apache /usr/share/httpd/.wp-cli
 sudo -u apache  wp plugin install redis-cache --activate
@@ -71,5 +73,5 @@ sudo -u apache  wp redis enable
 # Restart Apache to apply changes
 sudo systemctl restart httpd
 
-# Create a read-only user
+# Create a read-only user for WordPress
 sudo -u apache wp user create user _user@example.com --role=editor --user_pass=password
