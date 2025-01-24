@@ -1,3 +1,6 @@
+## Task
+The task is described in a separate [file](https://github.com/chmelvv/DevOpsDemo/blob/master/task.txt)
+
 ## How to run project
 1) To clone this project to you local machine, run the following command:
 ```
