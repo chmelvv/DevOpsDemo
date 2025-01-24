@@ -1,7 +1,7 @@
 ## How to run project
 1) To clone this project to you local machine, run the following command:
 ```
-git clone https://github.com/chmelvv/abz-test.git
+git clone [https://github.com/chmelvv/abz-test.git](https://github.com/chmelvv/DevOpsDemo.git)
 ```
 2) Setup your AWS credentials for aws cli to be able to run the _terraform_ command.
 3) To deploy the infrastructure, run the following command:
